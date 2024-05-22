@@ -2,7 +2,7 @@ const express = require('express')
 const morgan = require('morgan')
 const app = express()
 // require('dotenv').config()// module to use .env file in my data
-const port = process.env.PORT
+const PORT = process.env.PORT || 3001
 const Person = require('./models/person') // import the person model for database
 const cors = require('cors') // module to allow cross-origin requests
 
@@ -11,7 +11,7 @@ morgan.token('mBody', (req) => JSON.stringify(req.body)
 )
 app.use(morgan(':method :url :res[content-length] - :response-time ms :mBody')) // use morgan to log the request
 app.use(cors())
-app.use(express.static('dist'))
+// app.use(express.static('dist'))
 
 // error handler middleware
 const errorHandler = (error, req, res, next) => {
@@ -117,6 +117,6 @@ app.put('/api/persons/:id', (req, res, next) => {
 app.use(unknownEndpoint)
 app.use(errorHandler)
 
-app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`)
-})
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`)
+  })
