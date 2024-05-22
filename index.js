@@ -1,7 +1,7 @@
 const express = require('express')
 const morgan = require('morgan')
 const app = express()
-require('dotenv').config()// module to use .env file in my data
+// require('dotenv').config()// module to use .env file in my data
 const port = process.env.PORT
 const Person = require('./models/person') // import the person model for database
 const cors = require('cors') // module to allow cross-origin requests
